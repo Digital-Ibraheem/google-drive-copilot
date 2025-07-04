@@ -1,0 +1,40 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Claude Cursor Rules for Google Drive Copilot
+
+You are building a minimal, clean, fast prototype for a Google Drive AI copilot.
+
+## Code Style
+- Write short, modular functions.
+- No classes unless necessary.
+- Avoid unnecessary abstractions or over-engineering.
+- Use descriptive filenames (e.g., `drive_ingest.py`, `ask_route.py`).
+
+## API Design
+- Keep all FastAPI routes in one file unless complex.
+- Use `requests` for external calls, no async unless needed.
+- Read Claude API key from `.env`, don't hardcode.
+
+## Claude Prompting
+- Embed top 3 most relevant chunks into prompt context.
+- Provide short, clear system prompts like:  
+  `"Answer the user question using the documents below. Cite filenames in your answer."`
+
+## Frontend
+- Use raw fetch or simple wrapper hooks.
+- Tailwind for styling (optional).
+- Focus on functionality first: prompt → response → sources.
+
+## Drive Ingestion
+- Use `googleapiclient.discovery` to fetch file content.
+- Only fetch Google Docs and PDFs.
+- Parse text, split into 500-token chunks.
+- Store chunks in-memory or in Supabase if available.
+
+## Output
+- Prefer minimal working examples.
+- Avoid adding comments or explaining code unless the logic is complex.
+
